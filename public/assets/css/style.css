@@ -1,0 +1,55 @@
+
+body {
+	background: yellow;
+}
+
+.jumbotron {}
+
+.center {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.center img {
+	width: 100%;
+	padding: 5px;
+	border: 1px solid black;
+}
+
+.center h1 {
+	padding: 20px;
+}
+
+.burger {}
+
+.ordered {}
+
+.eaten {}
+
+.orderArea {
+	align-items: center
+}
+
+.btn {
+	padding: 2px 5px;
+	margin: 5px;
+}
+
+
+
+
+
+/*.row {
+	background-color: rgba(255, 230, 230, 0.5);
+	border: 1px dashed red;
+	stroke-dashoffset: 10;
+}
+
+[class*="col"]{
+	background-color: rgba(230, 230, 255, 0.5);
+	border: 1px dashed blue;
+	stroke-dashoffset: 20;
+}*/
+

@@ -1,0 +1,20 @@
+<li>
+	{{this.id}} <span>. </span> {{this.burger_name}}
+
+	{{#if this.devoured}}
+		<button class="changeDevoured btn btn-success" data-id="{{id}}" data-currDevourState="{{devoured}}">
+			Re-order
+		</button>
+		<button class="deleteBurger btn btn-danger" data-id="{{id}}">
+			Delete
+		</button>
+		{{else}}
+		<button class="changeDevoured btn btn-warning" data-id="{{id}}" data-currDevourState="{{devoured}}">
+			Devour!
+		</button>
+	{{/if}}
+
+</li>
+
+
+

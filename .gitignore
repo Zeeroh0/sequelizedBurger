@@ -1,0 +1,6 @@
+node_modules
+.DS_Store
+
+config/connection.js
+config/config.json
+package-lock.json

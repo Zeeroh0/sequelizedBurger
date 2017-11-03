@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="jumbotron">
+
+    <div class="row">
+      <!-- Burgers available to eat -->
+      <div class="col sm burger ordered">
+        <ul>
+          {{#each burgers}}
+            {{#unless devoured}}
+              {{> burger/burger-buttons devored=true}}             
+            {{/unless}}
+          {{/each}}
+        </ul>
+      </div>
+
+      <!-- Pic, title, devour button, form/submit, and brief instructions -->
+      <div class="col sm center">
+        <img src="/assets/images/burger.jpeg" alt="Yummy burgers!">
+        <h1>Eat-Da-Burger!</h1>
+      </div>
+
+      <!-- Burgers that have been eaten already -->
+      <div class="col sm burger eaten">
+        <ul>
+          {{#each burgers}}
+            {{#if devoured}}
+              {{> burger/burger-buttons devored=false}}             
+            {{/if}}
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col center">
+        <div class="orderArea">
+          <form class="orderForm">
+            <div class="orderBox">
+              <textarea rows="4" cols="50" id="orderUp" name="burger_name"></textarea>
+              <br>
+              <label for="orderUp">Place an order for ANY kind of burger!</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  
+
+</div>
+

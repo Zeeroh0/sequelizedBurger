@@ -43,7 +43,7 @@ $(document).ready(function() {
 
 		let thisID = $(this).data("id");
 
-		if ( $(this).data("currdevourstate") === 0 ) {
+		if ( $(this).data("currdevourstate") === 0 || $(this).data("currdevourstate") === false) {
 			var newDevourState = {devoured: 1};
 		} else {
 			var newDevourState = {devoured: 0};
@@ -56,7 +56,10 @@ $(document).ready(function() {
 				data: newDevourState
 			}
 
-		).then( () => { location.reload() });
+		).then( () => { 
+			console.log("Is this on?");
+			location.reload() 
+		});
 	});
 
 

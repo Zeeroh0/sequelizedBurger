@@ -2,57 +2,58 @@ const express = require('express');
 
 const router = express.Router();
 
-const burgers = require('../model/burger.js');
+const db = require('../models/');
 
 
-router.get('/', function (req, res) {
-	burgers.selectAll(
-		function (data) {
-			console.log('"/" call Burgers object:', data);
-			res.render("index", { burgers: data });
-		}
-	);
+router.get("/", function(req, res) {
+	res.redirect("/burger-time")
 });
 
-router.post('/api/burgers', function(req, res) {
-	burgers.insertOne(
-		["burger_name"],
-		[req.body.burger_name],
-		function (result) {
-			res.json({ id: result.insertId});
-		}
-	);
+// Get all burger entries
+router.get("/burger-time", function (req, res) {
+	db.burgers.findAll({})
+		.then(function (data) {
+			var allBurgers = [];
+			for (var i = 0; i < data.length; i++) {
+				allBurgers.push(data[i].dataValues);		
+			}
+			res.render("index", { burgers: allBurgers });
+		});
 });
 
+// Post a new burger
+router.post("/api/burgers", function(req, res) {
+	db.burgers.create({
+		burger_name: req.body.burger_name,
+	}).then(function(data) {
+		res.redirect("/");
+	});
+});
+
+// Update a burger's devoured state
 router.put("/api/burgers/:id", function (req, res) {
-	let condition = `id = ${req.params.id}`;
-
-	console.log("Eating burger with ID of ", condition);
-
-	burgers.updateOne(
-		{devoured: req.body.devoured},
-		condition,
-		function (result) {
-			if (result.changedRows == 0) {
-				return res.status(404).end();
-			} else {
-				res.status(200).end();
+	db.burgers.update(
+		{
+			devoured: req.body.devoured
+		},
+		{
+			where: {
+				id: req.params.id
 			}
 		}
-	);
+	).then(function(data) {
+		res.json(data);
+	});
 });
 
+// Delete a specific burger
 router.delete("/api/burgers/:id", function (req, res) {
-	let condition = `id = ${req.params.id}`;
-
-	console.log("Deleting burger with ID of ", condition);
-
-	burgers.deleteOne(condition, function (result) {
-		if (result.affectedRows == 0) {
-	      return res.status(404).end();
-	    } else {
-	      res.status(200).end();
-	    } 
+	db.burgers.destroy({
+		where: {
+			id: req.params.id
+		}
+	}).then(function(data) {
+		res.json(data);
 	});
 });
 

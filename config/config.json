@@ -7,10 +7,10 @@
     "dialect": "mysql"
   },
   "test": {
-    "username": "z7ymd7o0nc20rwwg",
-    "password": "h3z30oxrm0uw3gr2",
-    "database": "burgers_db",
-    "host": "x3ztd854gaa7on6s.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "username": "root",
+    "password": "",
+    "database": "",
+    "host": "",
     "dialect": "mysql"
   },
   "production": {
